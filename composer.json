@@ -1,0 +1,29 @@
+{
+  "name": "unisharp/laravel-pagerender",
+  "description": "Provide functions to build regular pages with parent-child relationships.",
+  "type": "library",
+  "keywords": [
+	"pagerender",
+	"page",
+	"render",
+	"parent",
+	"laravel"
+  ],
+  "license": "MIT",
+  "authors": [
+	{
+	  "name": "Unisharp Ltd.",
+	  "email": "service@unisharp.com",
+      "homepage": "http://www.unisharp.com"
+	}
+  ],
+  "require": {
+	"php": ">=5.5.0",
+	"illuminate/support": ">=5.0.0"
+  },
+  "autoload": {
+	"psr-4": {
+	  "Unisharp\\Pagerender\\": "src/Pagerender/"
+	}
+  }
+}
