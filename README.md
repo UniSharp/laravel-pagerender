@@ -49,7 +49,7 @@
 	$page->getByAlias('aboutus');
 	// Get the about us page.
 
-    $page->hasByAlias($alias);
+    $page->hasByAlias('aboutus');
     // Check if the about us page exists.
 
     $page->allWithAlias();
