@@ -1,12 +1,14 @@
 {
   "name": "unisharp/laravel-pagerender",
-  "description": "Provide functions to build regular pages with parent-child relationships.",
+  "description": "Provide functions to render regular pages with parent-child relationships.",
   "type": "library",
   "keywords": [
 	"pagerender",
 	"page",
 	"render",
 	"parent",
+	"breadcrumb",
+	"tree",
 	"laravel"
   ],
   "license": "MIT",

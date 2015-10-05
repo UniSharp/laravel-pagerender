@@ -10,9 +10,9 @@ trait Pagerender
     public function render()
     {
     	if (!empty($page->custom_view)) {
-    	    return view('page.'.$page->custom_view);
+    	    return view($this->folder.'.'.$page->custom_view);
     	} else {
-    	    return view('page.show');
+    	    return view($this->folder.'.'.$this->default_view);
     	}
     }
 

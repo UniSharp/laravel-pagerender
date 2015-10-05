@@ -1,8 +1,9 @@
 # Page Render Package for Laravel
 
- * Simple key-value storage
- * Support multi-level array (dot delimited keys) structure.
- * Localization supported.
+ * Find your page by alias(aboutus, service, and so on), forget about id.
+ * Support page with parent-child structure.
+ * Support custom view for different pages.
+ * Support breadcrumb(with ancestors function).
 
 ## Installation
 
@@ -16,9 +17,23 @@
 
 	```php
 		use \Unisharp\Pagerender\Pagerender;
+	
+		private $folder;
+	    private $default_view;
+	    public function __construct()
+	    {
+	        $this->folder = 'page';
+	        $this->default_view = 'show';
+	    }
 	```
 
 1. make sure your table has these columns : `parent_id`, `alias`, `custom_view`
+	
+	```php
+        $table->string('alias');
+        $table->integer('parent_id');
+        $table->string('custom_view')->nullable();
+	```
 
 ## Usage
 
