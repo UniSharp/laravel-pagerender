@@ -16,7 +16,7 @@
 1. use the trait in your model
 
 	```php
-		use \Unisharp\PageRender\PageRenderTrait;
+		use \Unisharp\Pagerender\PageRenderTrait;
 	
 		private $folder = 'page';
 	    private $default_view = 'show';
