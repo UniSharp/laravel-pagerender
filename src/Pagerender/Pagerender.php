@@ -1,7 +1,7 @@
 <?php
-namespace Unisharp\Pagerender;
+namespace Unisharp\PageRender;
 
-trait Pagerender
+trait PageRenderTrait
 {
     /*********************************
      *********    General    *********

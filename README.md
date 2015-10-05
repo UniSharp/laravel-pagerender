@@ -16,15 +16,10 @@
 1. use the trait in your model
 
 	```php
-		use \Unisharp\Pagerender\Pagerender;
+		use \Unisharp\PageRender\PageRenderTrait;
 	
-		private $folder;
-	    private $default_view;
-	    public function __construct()
-	    {
-	        $this->folder = 'page';
-	        $this->default_view = 'show';
-	    }
+		private $folder = 'page';
+	    private $default_view = 'show';
 	```
 
 1. make sure your table has these columns : `parent_id`, `alias`, `custom_view`
