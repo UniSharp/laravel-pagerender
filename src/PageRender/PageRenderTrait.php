@@ -1,5 +1,5 @@
 <?php
-namespace Unisharp\PageRender;
+namespace Unisharp\Pagerender;
 
 trait PageRenderTrait
 {
