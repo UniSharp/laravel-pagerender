@@ -19,15 +19,21 @@
 		use \Unisharp\Pagerender\PageRenderTrait;
 	
 		private $folder = 'page';
-	    private $default_view = 'show';
+		private $default_view = 'show';
 	```
 
 1. make sure your table has these columns : `parent_id`, `alias`, `custom_view`
 	
 	```php
-        $table->string('alias');
-        $table->integer('parent_id');
-        $table->string('custom_view')->nullable();
+	public function up()
+	{
+		Schema::create('models', function(Blueprint $table)
+		{
+			// ...
+        		$table->string('alias');
+        		$table->integer('parent_id')->unsigned()->nullable();
+        		$table->string('custom_view', 128)->nullable();
+        		// ..
 	```
 
 ## Usage
@@ -59,17 +65,17 @@
 	$page->getByAlias('aboutus');
 	// Get the about us page.
 
-    $page->hasByAlias('aboutus');
-    // Check if the about us page exists.
+    	$page->hasByAlias('aboutus');
+    	// Check if the about us page exists.
 
-    $page->allWithAlias();
-    // Get pages that have alias.
+    	$page->allWithAlias();
+    	// Get pages that have alias.
 
-    $page->getLevel();
-    // Get level count(top level as 0).
+    	$page->getLevel();
+    	// Get level count(top level as 0).
 
-    $page->ancestors();
-    // Get all parent pages of the current page.
+    	$page->ancestors();
+    	// Get all parent pages of the current page.
 ```
 
 ## Todo
