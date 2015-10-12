@@ -9,21 +9,21 @@ trait PageRenderTrait
 
     public function render()
     {
-    	if (!empty($page->custom_view)) {
-    	    return view($this->folder.'.'.$page->custom_view);
-    	} else {
-    	    return view($this->folder.'.'.$this->default_view);
-    	}
+        if (!empty($page->custom_view)) {
+            return view($this->folder.'.'.$page->custom_view);
+        } else {
+            return view($this->folder.'.'.$this->default_view);
+        }
     }
 
-	public function subs()
+    public function subs()
     {
         return $this->hasMany(get_class(), 'parent_id', 'id');
     }
 
     public function hasSubs()
     {
-    	return $this->subs->count > 0;
+        return $this->subs->count > 0;
     }
 
     public function parent()
@@ -42,12 +42,12 @@ trait PageRenderTrait
 
     public function roots()
     {
-    	return self::where('parent_id', 0)->get();
+        return self::where('parent_id', 0)->get();
     }
 
     public function isRoot()
     {
-    	return !self::hasParent();
+        return !self::hasParent();
     }
 
     /*********************************
@@ -56,17 +56,17 @@ trait PageRenderTrait
 
     public function getByAlias($alias)
     {
-    	return self::where('alias', $alias)->first();
+        return self::where('alias', $alias)->first();
     }
 
     public function hasByAlias($alias)
     {
-    	return self::where('alias', $alias)->exists();
+        return self::where('alias', $alias)->exists();
     }
 
     public function allWithAlias()
     {
-    	return self::whereNotNull('alias')->get();
+        return self::whereNotNull('alias')->get();
     }
 
     /********************************
@@ -75,11 +75,11 @@ trait PageRenderTrait
 
     public function getLevel($page = null)
     {
-    	if (is_null($page)) {
-    		$page = $this->find($this->id);
-    	}
+        if (is_null($page)) {
+            $page = $this->find($this->id);
+        }
 
-    	if ($page->isRoot()) {
+        if ($page->isRoot()) {
             return 0;
         }
 
@@ -88,23 +88,23 @@ trait PageRenderTrait
 
     public function ancestors($page = null, $arr_page = array())
     {
-    	if (is_null($page)) {
-    		$page = $this->find($this->id);
-    	}
+        if (is_null($page)) {
+            $page = $this->find($this->id);
+        }
 
-    	if ($page->isRoot()) {
-			array_push($arr_page, $page);
+        if ($page->isRoot()) {
+            array_push($arr_page, $page);
             return $arr_page;
         }
 
-		$arr_page = self::ancestors($page->parent, $arr_page);
-		array_push($arr_page, $page);
+        $arr_page = self::ancestors($page->parent, $arr_page);
+        array_push($arr_page, $page);
 
         return $arr_page;
     }
 
     public function tree()
     {
-    	return true;
+        return true;
     }
 }
