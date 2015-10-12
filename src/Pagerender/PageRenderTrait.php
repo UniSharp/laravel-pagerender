@@ -33,7 +33,7 @@ trait PageRenderTrait
 
     public function hasParent()
     {
-        if ($this->parent_id === 0 || is_null($this->parent_id)) {
+        if ($this->parent_id === 0 || is_null($this->parent)) {
             return false;
         } else {
             return true;
