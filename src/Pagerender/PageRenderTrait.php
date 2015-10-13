@@ -9,8 +9,8 @@ trait PageRenderTrait
 
     public function render()
     {
-        if (!empty($page->custom_view)) {
-            return view($this->folder.'.'.$page->custom_view);
+        if (!empty($this->custom_view)) {
+            return view($this->folder.'.'.$this->custom_view);
         } else {
             return view($this->folder.'.'.$this->default_view);
         }
