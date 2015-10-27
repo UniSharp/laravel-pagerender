@@ -18,8 +18,7 @@
     ```php
     use \Unisharp\Pagerender\PageRenderTrait;
     
-    private $folder = 'page';
-    private $default_view = 'show';
+    private $default_view = 'page.show';
     ```
 
 1. make sure your table has these columns : `parent_id`, `alias`, `custom_view`
@@ -44,6 +43,18 @@
     $page->render();
     // Generates the default view(or custom view if the column is not empty).
 
+    $page->summary('content', 7);
+    // Shorten words of a column, ex: The PHP...
+
+    $page->getByAlias('aboutus');
+    // Get the about us page.
+
+    $page->hasByAlias('aboutus');
+    // Check if the about us page exists.
+
+    $page->allWithAlias();
+    // Get pages that have alias.
+
     $page->subs;
     // Get children pages.
 
@@ -61,15 +72,6 @@
 
     $page->isRoot();
     // Check if this page is at top level.
-
-    $page->getByAlias('aboutus');
-    // Get the about us page.
-
-    $page->hasByAlias('aboutus');
-    // Check if the about us page exists.
-
-    $page->allWithAlias();
-    // Get pages that have alias.
 
     $page->getLevel();
     // Get level count(top level as 0).

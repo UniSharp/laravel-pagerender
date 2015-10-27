@@ -9,11 +9,37 @@ trait PageRenderTrait
 
     public function render()
     {
+        $path_to_view = $this->default_view;
+
         if (!empty($this->custom_view)) {
-            return view($this->folder.'.'.$this->custom_view);
-        } else {
-            return view($this->folder.'.'.$this->default_view);
+            $path_to_view = $this->custom_view;
         }
+
+        if (!empty($this->folder)) {
+            $path_to_view = $this->folder.'.'.$path_to_view;
+        }
+
+        if (preg_match('/[#$%^&*()+=\-\[\]\';,\/{}|":<>?~\\\\]/', $path_to_view)) {
+            $msg = 'Remove illegal char(s) from your view path : '.$path_to_view;
+            throw new \Exception($msg);
+        }
+
+        return view($path_to_view);
+    }
+
+    public function summary($attr, $word_count)
+    {
+        $sentence = $this->$attr;
+
+        if (empty($sentence)) {
+            return null;
+        }
+
+        $sentence = strip_tags($sentence);
+
+        $sentence = str_limit($sentence, $word_count);
+
+        return $sentence;
     }
 
     public function subs()
